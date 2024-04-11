@@ -1,0 +1,60 @@
+import java.util.Scanner;
+import java.util.Stack;
+
+public class PilhaProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Stack<Integer> pilha = new Stack<>();
+
+        int opcao;
+        do {
+            System.out.println("\nEscolha uma opção:");
+            System.out.println("1 - Empilhar");
+            System.out.println("2 - Desempilhar");
+            System.out.println("3 - Ver o topo");
+            System.out.println("4 - Listar");
+            System.out.println("0 - Sair");
+
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite o valor a ser empilhado:");
+                    int valor = scanner.nextInt();
+                    pilha.push(valor);
+                    System.out.println("Valor empilhado com sucesso!");
+                    break;
+                case 2:
+                    if (!pilha.isEmpty()) {
+                        int desempilhado = pilha.pop();
+                        System.out.println("Valor desempilhado: " + desempilhado);
+                    } else {
+                        System.out.println("A pilha está vazia!");
+                    }
+                    break;
+                case 3:
+                    if (!pilha.isEmpty()) {
+                        System.out.println("Topo da pilha: " + pilha.peek());
+                    } else {
+                        System.out.println("A pilha está vazia!");
+                    }
+                    break;
+                case 4:
+                    if (!pilha.isEmpty()) {
+                        System.out.println("Conteúdo da pilha: " + pilha);
+                    } else {
+                        System.out.println("A pilha está vazia!");
+                    }
+                    break;
+                case 0:
+                    System.out.println("Encerrando o programa...");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+                    break;
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+}

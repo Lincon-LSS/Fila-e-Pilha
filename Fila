@@ -1,0 +1,61 @@
+import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class FilaProgram {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Queue<Integer> fila = new LinkedList<>();
+
+        int opcao;
+        do {
+            System.out.println("\nEscolha uma opção:");
+            System.out.println("1 - Enfileirar");
+            System.out.println("2 - Desenfileirar");
+            System.out.println("3 - Ver o primeiro elemento");
+            System.out.println("4 - Listar");
+            System.out.println("0 - Sair");
+
+            opcao = scanner.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    System.out.println("Digite o valor a ser enfileirado:");
+                    int valor = scanner.nextInt();
+                    fila.offer(valor);
+                    System.out.println("Valor enfileirado com sucesso!");
+                    break;
+                case 2:
+                    if (!fila.isEmpty()) {
+                        int desenfileirado = fila.poll();
+                        System.out.println("Valor desenfileirado: " + desenfileirado);
+                    } else {
+                        System.out.println("A fila está vazia!");
+                    }
+                    break;
+                case 3:
+                    if (!fila.isEmpty()) {
+                        System.out.println("Primeiro elemento da fila: " + fila.peek());
+                    } else {
+                        System.out.println("A fila está vazia!");
+                    }
+                    break;
+                case 4:
+                    if (!fila.isEmpty()) {
+                        System.out.println("Conteúdo da fila: " + fila);
+                    } else {
+                        System.out.println("A fila está vazia!");
+                    }
+                    break;
+                case 0:
+                    System.out.println("Encerrando o programa...");
+                    break;
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+                    break;
+            }
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+}
